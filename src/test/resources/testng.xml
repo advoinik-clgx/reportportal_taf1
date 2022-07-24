@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Some suite" verbose="1">
+    <listeners>
+        <listener class-name="scenarios.listeners.AllureTestListener"/>
+    </listeners>
+
+    <test name="TTTest">
+        <classes>
+            <class name="scenarios.ui.UserSettingsTest"/>
+            <class name="scenarios.ui.LoginTest"/>
+        </classes>
+    </test>
+
+</suite>
