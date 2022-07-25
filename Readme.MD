@@ -16,7 +16,7 @@ Supported arguments:
 E.g.:
 
 ```shell
-gradle clean test -Drp.endpoint="utils://localhost:8080/" -Ddriver="chrome"
+gradle clean test -Drp.endpoint="http://localhost:8080/" -Ddriver="chrome"
 ```
 
 ### To run Allure report:
