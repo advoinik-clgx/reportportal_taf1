@@ -17,19 +17,17 @@ pipeline {
     }
 
     stages {
-        timeout(unit: 'MINUTES', time: 30) {
-            stage('Test') {
-                steps {
-                    withCredentials([usernamePassword(credentialsId: 'rp-superadmin', passwordVariable: 'rp_password', usernameVariable: 'rp_login')]) {
-                        sh "gradle test  -Drp.endpoint='http://164.92.50.139:8080/' -Ddriver='chrome'"
-                    }
+        stage('Test') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'rp-superadmin', passwordVariable: 'rp_password', usernameVariable: 'rp_login')]) {
+                    sh "gradle test  -Drp.endpoint='http://164.92.50.139:8080/' -Ddriver='chrome'"
                 }
             }
-            stage('Allure report') {
-                allure results: [
-                    [path: 'build/allure-results']
-                ]
-            }
+        }
+        stage('Allure report') {
+            allure results: [
+                [path: 'build/allure-results']
+            ]
         }
     }
 }
