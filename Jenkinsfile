@@ -25,9 +25,11 @@ pipeline {
             }
         }
         stage('Allure report') {
-            allure results: [
-                [path: 'build/allure-results']
-            ]
+            steps {
+                allure results: [
+                    [path: 'build/allure-results']
+                ]
+            }
         }
     }
 }
