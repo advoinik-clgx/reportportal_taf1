@@ -7,6 +7,8 @@ public class Config {
             : Environment.REMOTE;
     public static final String DRIVER_NAME = System.getProperty("web_driver");
     public static final String API_TOKEN = System.getenv("api_token");
+    public static final String RP_LOGIN = System.getenv("RP_LOGIN");
+    public static final String RP_PASSWORD = System.getenv("RP_PASSWORD");
 
     private Config() {
     }

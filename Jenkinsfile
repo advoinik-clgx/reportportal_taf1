@@ -9,7 +9,8 @@ pipeline {
 
     parameters {
         string(name: 'rp.endpoint', defaultValue: 'http://10.114.0.3:8080/')
-        string(name: 'login')
+        string(name: 'RP_LOGIN')
+        password(name: 'RP_PASSWORD')
     }
 
     environment {
