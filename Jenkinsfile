@@ -9,8 +9,7 @@ pipeline {
 
     parameters {
         string(name: 'rp.endpoint', defaultValue: 'http://10.114.0.3:8080/')
-        string(name: 'RP_LOGIN')
-        password(name: 'RP_PASSWORD')
+        string(name: 'rp.bearer_token')
     }
 
     environment {
