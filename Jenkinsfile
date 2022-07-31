@@ -25,12 +25,13 @@ pipeline {
                 }
             }
         }
-        post {
-            always {
-                allure results: [
-                    [path: 'build/allure-results']
-                ]
-            }
+    }
+    post {
+        always {
+            allure results: [
+                [path: 'build/allure-results']
+            ]
         }
     }
+
 }
