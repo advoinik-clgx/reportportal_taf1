@@ -25,11 +25,9 @@ pipeline {
             }
             post {
                 always {
-                    steps {
-                        allure results: [
-                            [path: 'build/allure-results']
-                        ]
-                    }
+                    allure results: [
+                        [path: 'build/allure-results']
+                    ]
                 }
             }
         }
