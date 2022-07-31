@@ -3,7 +3,7 @@ pipeline {
         label 'master'
     }
 
-    triggers { pollSCM('H */4 * * 1-5') }
+    triggers { pollSCM('H/5 * * * *') }
 
     parameters {
         string(name: 'rp_endpoint', defaultValue: 'http://10.114.0.3:8080/')
