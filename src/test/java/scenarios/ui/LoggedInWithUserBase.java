@@ -5,10 +5,12 @@ import org.testng.annotations.BeforeMethod;
 import steps.BaseSteps;
 import steps.LoginSteps;
 
-class LoggedInWithUserBaseTest extends BaseUiTest {
+class LoggedInWithUserBase extends BaseUi {
     @BeforeMethod
-    void beforeEach() {
+    public void beforeEach() {
         BaseSteps.navigate();
-        LoginSteps.login(new DefaultUser());
+        LoginSteps loginSteps = new LoginSteps();
+        loginSteps.loaded();
+        loginSteps.login(new DefaultUser());
     }
 }

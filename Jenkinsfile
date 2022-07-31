@@ -7,12 +7,7 @@ pipeline {
 
     parameters {
         string(name: 'rp_endpoint', defaultValue: 'http://10.114.0.3:8080/')
-        string(name: 'RP_LOGIN')
-        password(name: 'RP_PASSWORD')
-    }
-
-    environment {
-        api_token = '578acd15-bf89-4de3-8386-d40e509416d5'
+        string(name: 'rp_bearer_token')
     }
 
     stages {
@@ -21,7 +16,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'rp-superadmin', passwordVariable: 'rp_password', usernameVariable: 'rp_login')]) {
                     withGradle {
                         sh "chmod +x gradlew"
-                        sh "./gradlew clean test -Drp_endpoint=${rp_endpoint} -Ddriver='chrome'"
+                        sh "./gradlew clean te[]st -Drp_endpoint=${rp_endpoint} -Ddriver='chrome'"
                     }
                 }
             }

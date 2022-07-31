@@ -16,15 +16,14 @@ public class AllureTestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         log.warn("Test [%s] failed. Screenshot captured".formatted(getTestMethodName(result)));
-        AllureHelper.savePageScreenshot(Driver.get());
+        AllureHelper.savePageScreenshot(Driver.get(), "Test failed.");
         AllureHelper.saveTextLog(getTestMethodName(result));
     }
 
     @Override
     public void onTestFailedWithTimeout(ITestResult result) {
         log.warn("Test [%s] failed. Screenshot captured".formatted(getTestMethodName(result)));
-        AllureHelper.savePageScreenshot(Driver.get());
-        log.warn("after scrnsht");
+        AllureHelper.savePageScreenshot(Driver.get(), "Test failed by timeout.");
         AllureHelper.saveTextLog(getTestMethodName(result));
     }
 

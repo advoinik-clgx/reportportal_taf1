@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class LaunchInactivityTimeoutList extends ElementContainer {
-
     @FindBy(css = "div[class*='inputDropdown__opened--'] div[class*='inputDropdownOption__dropdown-option--']")
     public List<WebElement> options;
 

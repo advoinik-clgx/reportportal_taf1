@@ -7,8 +7,8 @@ import org.openqa.selenium.remote.RemoteWebElement;
 
 @Getter
 public class WebElementWrapper extends RemoteWebElement {
-    private WebElement webElement;
-    private Actions actions;
+    private final WebElement webElement;
+    private final Actions actions;
 
     public WebElementWrapper(WebElement webElement) {
         this.webElement = webElement;
@@ -23,5 +23,20 @@ public class WebElementWrapper extends RemoteWebElement {
         actions.moveToElement(webElement)
                 .build()
                 .perform();
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }

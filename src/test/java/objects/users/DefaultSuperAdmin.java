@@ -1,6 +1,6 @@
 package objects.users;
 
-public final class DefaultSuperAdmin extends AbstractUser {
+public final class DefaultSuperAdmin extends User {
     public DefaultSuperAdmin() {
         login = "superadmin";
         password = "erebus";

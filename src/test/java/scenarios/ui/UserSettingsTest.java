@@ -1,22 +1,24 @@
 package scenarios.ui;
 
-import elements.components.settings.general.LaunchInactivityTimeoutValues;
+import elements.components.settings.general.LaunchInactivityTimeoutValue;
 import io.qameta.allure.Issue;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import steps.LeftBarSteps;
 import steps.SettingsGeneralSteps;
 
-class UserSettingsTest extends LoggedInWithUserBaseTest {
+class UserSettingsTest extends LoggedInWithUserBase {
     @Test(description = "A user changes settings")
     @Issue("Test-3")
     void userEditLaunchInactivityTimeout() {
-        LaunchInactivityTimeoutValues newValue;
+        LaunchInactivityTimeoutValue newValue;
+        LeftBarSteps leftBarSteps = new LeftBarSteps();
+        SettingsGeneralSteps settingsGeneralSteps = new SettingsGeneralSteps();
 
-        LeftBarSteps.openSettings();
-        newValue = SettingsGeneralSteps.changeLaunchInactivityTimeoutRandomly();
-        LeftBarSteps.openDashboards();
-        LeftBarSteps.openSettings();
-        Assert.assertEquals(SettingsGeneralSteps.getLaunchInactivityTimeout(), newValue);
+        leftBarSteps.openSettings();
+        newValue = settingsGeneralSteps.changeLaunchInactivityTimeoutRandomly();
+        leftBarSteps.openDashboards();
+        leftBarSteps.openSettings();
+        Assert.assertEquals(settingsGeneralSteps.getLaunchInactivityTimeout(), newValue);
     }
 }

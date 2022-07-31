@@ -10,5 +10,4 @@ class AvailabilityTest {
         RpHttpClient apiClient = new RpHttpClient();
         apiClient.healthCheck();
     }
-
 }

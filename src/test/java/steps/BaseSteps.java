@@ -16,9 +16,4 @@ public class BaseSteps {
         log.info("Navigating to {}...", Config.BASE_URL);
         Driver.get().navigate().to(Config.BASE_URL);
     }
-
-    @Step(value = "Reset driver, clear cookies")
-    public static void reset() {
-        Driver.restartDriver();
-    }
 }
