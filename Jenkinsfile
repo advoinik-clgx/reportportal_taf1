@@ -6,7 +6,7 @@ pipeline {
     triggers { pollSCM('H */4 * * 1-5') }
 
     parameters {
-        string(name: 'rp.endpoint', defaultValue: 'http://10.114.0.3:8080/')
+        string(name: 'rp_endpoint', defaultValue: 'http://10.114.0.3:8080/')
         string(name: 'RP_LOGIN')
         password(name: 'RP_PASSWORD')
     }
@@ -21,7 +21,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'rp-superadmin', passwordVariable: 'rp_password', usernameVariable: 'rp_login')]) {
                     withGradle {
                         sh "chmod +x gradlew"
-                        sh "./gradlew clean test -Drp.endpoint=${rp.endpoint} -Ddriver='chrome'"
+                        sh "./gradlew clean test -Drp_endpoint=${rp_endpoint} -Ddriver='chrome'"
                     }
                 }
             }

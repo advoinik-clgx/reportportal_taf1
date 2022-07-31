@@ -6,7 +6,7 @@ Report Portal test automation project
 
 Supported arguments:
 
-* **rp.endpoint** - url to run tests against;
+* **rp_endpoint** - url to run tests against;
 * **web_driver** - WebDriver name (_chrome_ or _firefox_, if not provided, _chrome_ will run) 
 
 ### !!!!!
@@ -16,7 +16,7 @@ Supported arguments:
 E.g.:
 
 ```shell
-gradle clean test -Drp.endpoint="http://localhost:8080/" -Ddriver="chrome"
+gradle clean test -Drp_endpoint="http://localhost:8080/" -Ddriver="chrome"
 ```
 
 ### To run Allure report:
