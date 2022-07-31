@@ -9,7 +9,8 @@ pipeline {
 
     parameters {
         string(name: 'rp.endpoint', defaultValue: 'http://10.114.0.3:8080/')
-        string(name: 'rp.bearer_token')
+        string(name: 'RP_LOGIN')
+        password(name: 'RP_PASSWORD')
     }
 
     environment {
@@ -23,12 +24,12 @@ pipeline {
                     sh "gradle test  -Drp.endpoint='http://164.92.50.139:8080/' -Ddriver='chrome'"
                 }
             }
-            post {
-                always {
-                    allure results: [
-                        [path: 'build/allure-results']
-                    ]
-                }
+        }
+        post {
+            always {
+                allure results: [
+                    [path: 'build/allure-results']
+                ]
             }
         }
     }
