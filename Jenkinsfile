@@ -24,12 +24,14 @@ pipeline {
                     sh "gradle test  -Drp.endpoint='http://164.92.50.139:8080/' -Ddriver='chrome'"
                 }
             }
-        }
-        stage('Allure report') {
-            steps {
-                allure results: [
-                    [path: 'build/allure-results']
-                ]
+            post {
+                always {
+                    steps {
+                        allure results: [
+                            [path: 'build/allure-results']
+                        ]
+                    }
+                }
             }
         }
     }
