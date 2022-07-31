@@ -1,8 +1,6 @@
 pipeline {
     agent {
-        docker {
-            image 'gradle:7.5.0-jdk18-alpine'
-        }
+        label 'master'
     }
 
     triggers { pollSCM('H */4 * * 1-5') }
