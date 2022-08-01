@@ -40,8 +40,8 @@ class WebDriverFabric {
     }
 
     private static FirefoxDriver createFirefoxDriver() {
-        FirefoxOptions options = new FirefoxOptions();
         WebDriverManager.firefoxdriver().setup();
+        FirefoxOptions options = new FirefoxOptions();
         return new FirefoxDriver(options);
     }
 }
