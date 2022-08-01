@@ -6,6 +6,7 @@ pipeline {
     triggers { pollSCM('H/5 * * * *') }
 
     parameters {
+        choice(name: 'browser', choices: ['chrome', 'firefox'])
         string(name: 'rp_endpoint', defaultValue: 'http://10.114.0.3:8080/')
         string(name: 'rp_bearer_token')
     }

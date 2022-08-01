@@ -28,8 +28,14 @@ class WebDriverFabric {
     }
 
     private static ChromeDriver createChromeDriver() {
-        ChromeOptions options = new ChromeOptions();
         WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless",
+                "--no-sandbox",
+                "--window-size=1100,1200",
+                "--disable-extensions",
+                "--ignore-certificate-errors",
+                "--disable-gpu");
         return new ChromeDriver(options);
     }
 

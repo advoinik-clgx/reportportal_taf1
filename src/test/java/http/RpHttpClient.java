@@ -6,7 +6,9 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 
 public class RpHttpClient {
-    private static final String API_URL = "%sapi/v1/".formatted(Config.BASE_URL);
+    private static final String API_URL = Config.BASE_URL.endsWith("/")
+            ? "%sapi/v1/".formatted(Config.BASE_URL)
+            : "%s/api/v1/".formatted(Config.BASE_URL);
     private static final RequestSpecification serviceRequestSpec = serviceRequestSpec();
 
     private static RequestSpecification serviceRequestSpec() {
