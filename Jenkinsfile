@@ -17,7 +17,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'rp-superadmin', passwordVariable: 'rp_password', usernameVariable: 'rp_login')]) {
                     withGradle {
                         sh "chmod +x gradlew"
-                        sh "./gradlew clean test -Drp_endpoint=${rp_endpoint} -Ddriver='chrome'"
+                        sh "./gradlew clean test -Drp_endpoint=${rp_endpoint} -Ddriver=$browser"
                     }
                 }
             }
