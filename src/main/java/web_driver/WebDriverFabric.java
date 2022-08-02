@@ -35,7 +35,9 @@ class WebDriverFabric {
                 "--window-size=1100,1200",
                 "--disable-extensions",
                 "--ignore-certificate-errors",
-                "--disable-gpu");
+                "--disable-gpu",
+                "--disable-dev-shm-usage",
+                "disable-infobars");
         return new ChromeDriver(options);
     }
 
