@@ -3,6 +3,10 @@ pipeline {
         label 'master'
     }
 
+    options {
+        ansiColor('xterm')
+    }
+
     triggers { pollSCM('H/5 * * * *') }
 
     parameters {
@@ -13,13 +17,16 @@ pipeline {
 
     stages {
         stage('Test') {
+            tools {
+               jdk "openjdk-17"
+            }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'rp-superadmin', passwordVariable: 'rp_password', usernameVariable: 'rp_login')]) {
-                    withGradle {
+//                 withCredentials([usernamePassword(credentialsId: 'rp-superadmin', passwordVariable: 'rp_password', usernameVariable: 'rp_login')]) {
+//                     withGradle {
                         sh "chmod +x gradlew"
                         sh "./gradlew clean test -Drp_endpoint=${rp_endpoint} -Dweb_driver=$browser"
-                    }
-                }
+//                     }
+//                 }
             }
         }
     }
@@ -30,5 +37,4 @@ pipeline {
             ]
         }
     }
-
 }
