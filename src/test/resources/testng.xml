@@ -14,5 +14,10 @@
             <class name="scenarios.ui.LoginTest"/>
         </classes>
     </test>
+    <test name="API">
+        <classes>
+            <class name="scenarios.api.AvailabilityTest"/>
+        </classes>
+    </test>
 
 </suite>
