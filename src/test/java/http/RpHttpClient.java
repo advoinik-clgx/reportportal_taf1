@@ -7,12 +7,15 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 
 public class RpHttpClient {
+
+    public RpHttpClient(){}
+
     private static final String API_URL = Config.BASE_URL.endsWith("/")
             ? "%sapi/v1/".formatted(Config.BASE_URL)
             : "%s/api/v1/".formatted(Config.BASE_URL);
-    private static final RequestSpecification serviceRequestSpec = serviceRequestSpec();
+    private final RequestSpecification serviceRequestSpec = serviceRequestSpec();
 
-    private static RequestSpecification serviceRequestSpec() {
+    private RequestSpecification serviceRequestSpec() {
         return new RequestSpecBuilder()
                 .setBaseUri(API_URL)
                 .build()
