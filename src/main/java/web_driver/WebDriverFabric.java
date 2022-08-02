@@ -44,6 +44,14 @@ class WebDriverFabric {
     private static FirefoxDriver createFirefoxDriver() {
         WebDriverManager.firefoxdriver().setup();
         FirefoxOptions options = new FirefoxOptions();
+        options.addArguments("--headless",
+                "--no-sandbox",
+                "--window-size=1100,1200",
+                "--disable-extensions",
+                "--ignore-certificate-errors",
+                "--disable-gpu",
+                "--disable-dev-shm-usage",
+                "disable-infobars");
         return new FirefoxDriver(options);
     }
 }
