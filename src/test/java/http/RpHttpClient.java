@@ -1,6 +1,7 @@
 package http;
 
 import configuration.Config;
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
@@ -18,6 +19,7 @@ public class RpHttpClient {
                 .header("Authorization", Config.BEARER_TOKEN);
     }
 
+    @Step("API health check. Call project/analyzer/status")
     public void healthCheck() {
         RestAssured.given(serviceRequestSpec)
                 .basePath("project/analyzer/status")

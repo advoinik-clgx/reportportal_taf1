@@ -3,9 +3,9 @@ package scenarios.api;
 import http.RpHttpClient;
 import org.testng.annotations.Test;
 
-class AvailabilityTest {
+class AvailabilityTest extends BaseApi {
 
-    @Test
+    @Test(testName = "API health check")
     void serviceAvailableTest() {
         RpHttpClient apiClient = new RpHttpClient();
         apiClient.healthCheck();
