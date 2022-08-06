@@ -13,7 +13,7 @@ pipeline {
                 jdk "openjdk-17"
             }
             steps {
-                withSonarQubeEnv() {
+                withSonarQubeEnv(installationName: 'sonar', credentialsId: 'sonarqube') {
                     sh "./gradlew sonarqube \
                       -Dsonar.projectKey=${serviceName} \
                       -Dsonar.host.url=${env.SONAR_HOST_URL} \
