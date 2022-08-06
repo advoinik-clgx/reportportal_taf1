@@ -21,6 +21,7 @@ pipeline {
                 jdk "openjdk-17"
             }
             steps {
+                sh "pkill firefox-bin"
                 sh "chmod +x gradlew"
                 sh "./gradlew clean test -Drp_endpoint=${rp_endpoint} -Dweb_driver=$browser"
             }
