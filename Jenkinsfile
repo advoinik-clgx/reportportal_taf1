@@ -21,9 +21,26 @@ pipeline {
                 jdk "openjdk-17"
             }
             steps {
-                sh "pkill firefox-bin"
                 sh "chmod +x gradlew"
-                sh "./gradlew clean test -Drp_endpoint=${rp_endpoint} -Dweb_driver=$browser"
+                sh "./gradlew clean test -Drp_endpoint=${rp_endpoint} -Dweb_driver=$browser --info"
+            }
+        }
+        stage('Code analyze') {
+            tools {
+                jdk "openjdk-17"
+            }
+            steps {
+                withSonarQubeEnv(installationName: 'sonar') {
+                    sh "chmod +x gradlew"
+                    sh "./gradlew sonarqube"
+                }
+            }
+        }
+        stage("Quality Gate") {
+            steps {
+                timeout(time: 1, unit: 'HOURS') {
+                    waitForQualityGate abortPipeline: true
+                }
             }
         }
     }
