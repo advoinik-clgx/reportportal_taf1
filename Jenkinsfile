@@ -16,15 +16,6 @@ pipeline {
     }
 
     stages {
-        stage('Test') {
-            tools {
-                jdk "openjdk-17"
-            }
-            steps {
-                sh "chmod +x gradlew"
-                sh "./gradlew clean test -Drp_endpoint=${rp_endpoint} -Dweb_driver=$browser --info"
-            }
-        }
 
         stage('Code analyze') {
             tools {
@@ -50,6 +41,17 @@ pipeline {
                 }
             }
         }
+
+        stage('Test') {
+            tools {
+                jdk "openjdk-17"
+            }
+            steps {
+                sh "chmod +x gradlew"
+                sh "./gradlew clean test -Drp_endpoint=${rp_endpoint} -Dweb_driver=$browser --info"
+            }
+        }
+
     }
     post {
         always {
