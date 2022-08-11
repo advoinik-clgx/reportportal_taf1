@@ -30,28 +30,30 @@ class WebDriverFabric {
     private static ChromeDriver createChromeDriver() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox",
-                "--disable-dev-shm-usage",
-                "--headless",
-                "--window-size=1100,1200",
-                "--disable-extensions",
-                "--ignore-certificate-errors",
-                "--disable-gpu",
-                "disable-infobars");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--window-size=1100,1200");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--ignore-certificate-errors");
+        options.addArguments("--disable-gpu");
+        options.addArguments("disable-infobars");
+        options.setHeadless(true);
+        options.setAcceptInsecureCerts(true);
         return new ChromeDriver(options);
     }
 
     private static FirefoxDriver createFirefoxDriver() {
         WebDriverManager.firefoxdriver().setup();
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("--no-sandbox",
-                "--disable-dev-shm-usage",
-                "--headless",
-                "--window-size=1100,1200",
-                "--disable-extensions",
-                "--ignore-certificate-errors",
-                "--disable-gpu",
-                "disable-infobars");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--window-size=1100,1200");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--ignore-certificate-errors");
+        options.addArguments("--disable-gpu");
+        options.addArguments("disable-infobars");
+        options.setHeadless(true);
+        options.setAcceptInsecureCerts(true);
         return new FirefoxDriver(options);
     }
 }
