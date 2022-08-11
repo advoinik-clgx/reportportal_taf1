@@ -16,32 +16,6 @@ pipeline {
     }
 
     stages {
-
-        stage('Code analyze') {
-            tools {
-                jdk "openjdk-17"
-            }
-            steps {
-                withSonarQubeEnv(installationName: 'sonar') {
-                    sh "chmod +x gradlew"
-                    sh "./gradlew sonarqube"
-                }
-            }
-        }
-
-        stage("Quality Gate") {
-            steps {
-                script {
-                    timeout(time: 15, unit: 'MINUTES') {
-                        def qg = waitForQualityGate()
-                        if (qg.status != 'OK') {
-                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                        }
-                    }
-                }
-            }
-        }
-
         stage('Test') {
             tools {
                 jdk "openjdk-17"
@@ -51,7 +25,6 @@ pipeline {
                 sh "./gradlew clean test -Drp_endpoint=${rp_endpoint} -Dweb_driver=$browser --info"
             }
         }
-
     }
     post {
         always {
