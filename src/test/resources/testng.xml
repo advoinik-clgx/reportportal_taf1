@@ -4,6 +4,11 @@
         <listener class-name="listeners.AllureTestListener"/>
     </listeners>
 
+    <test name="API tests">
+        <packages>
+            <package name="scenarios.api"/>
+        </packages>
+    </test>
     <test name="TTTest">
         <classes>
             <class name="scenarios.ui.UserSettingsTest"/>
