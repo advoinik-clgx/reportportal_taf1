@@ -25,6 +25,7 @@ pipeline {
                 sh "./gradlew clean test -Drp_endpoint=${rp_endpoint} -Dweb_driver=$browser --info"
             }
         }
+
         stage('Code analyze') {
             tools {
                 jdk "openjdk-17"
@@ -36,19 +37,24 @@ pipeline {
                 }
             }
         }
-        stage("Quality Gate"){
-          timeout(time: 15, unit: 'MINUTES') {
-            def qg = waitForQualityGate()
-            if (qg.status != 'OK') {
-              error "Pipeline aborted due to quality gate failure: ${qg.status}"
+
+        stage("Quality Gate") {
+            steps {
+                script {
+                    timeout(time: 15, unit: 'MINUTES') {
+                        def qg = waitForQualityGate()
+                        if (qg.status != 'OK') {
+                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                        }
+                    }
+                }
             }
-          }
         }
     }
     post {
         always {
             allure results: [
-                [path: 'build/allure-results']
+                    [path: 'build/allure-results']
             ]
         }
     }
