@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Report Portal test suite" verbose="1" data-provider-thread-count="5" parallel="methods" thread-count="5">
+<suite name="Some suite" verbose="1" data-provider-thread-count="5" parallel="methods" thread-count="5">
     <listeners>
-        <listener class-name="scenarios.listeners.AllureTestListener"/>
+        <listener class-name="listeners.AllureTestListener"/>
     </listeners>
 
     <test name="TTTest">
@@ -12,11 +12,6 @@
     <test name="Login">
         <classes>
             <class name="scenarios.ui.LoginTest"/>
-        </classes>
-    </test>
-    <test name="API">
-        <classes>
-            <class name="scenarios.api.AvailabilityTest"/>
         </classes>
     </test>
 

@@ -12,7 +12,6 @@ buildscript {
 plugins {
     id 'java'
     id 'io.qameta.allure' version '2.9.6'
-    id "org.sonarqube" version "3.4.0.2513"
 }
 
 apply plugin: 'io.qameta.allure'
@@ -34,7 +33,7 @@ ext {
     testngVersion = '7.6.1'
     allureVersion = '2.18.1'
     seleniumVersion = '4.3.0'
-    bonigarciaVersion = '5.2.1'
+    bonigarciaVersion = '5.2.2'
     slf4jVersion = '1.7.36'
     lombokVersion = '1.18.24'
     aspectVersion = '1.9.9.1'
@@ -42,18 +41,31 @@ ext {
 }
 
 dependencies {
-    testImplementation "org.testng:testng:$testngVersion"
+    implementation "org.testng:testng:$testngVersion"
     implementation "io.qameta.allure:allure-testng:$allureVersion"
     implementation "io.qameta.allure:allure-rest-assured:$allureVersion"
     implementation "org.seleniumhq.selenium:selenium-java:$seleniumVersion"
     implementation "io.github.bonigarcia:webdrivermanager:$bonigarciaVersion"
     implementation "org.slf4j:slf4j-api:$slf4jVersion"
-    implementation "org.slf4j:slf4j-simple:$slf4jVersion"
+    implementation "org.slf4j:slf4j-log4j12:$slf4jVersion"
     implementation "org.projectlombok:lombok:$lombokVersion"
     annotationProcessor "org.projectlombok:lombok:$lombokVersion"
     testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
     runtimeOnly "org.aspectj:aspectjweaver:$aspectVersion"
-    testImplementation "io.rest-assured:rest-assured:$restAssuredVersion"
+    implementation "io.rest-assured:rest-assured:$restAssuredVersion"
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+    }
 }
 
 test {

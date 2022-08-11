@@ -1,4 +1,4 @@
-package scenarios.listeners;
+package listeners;
 
 import helpers.AllureHelper;
 import lombok.extern.slf4j.Slf4j;

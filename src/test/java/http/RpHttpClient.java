@@ -1,35 +1,42 @@
 package http;
 
 import configuration.Config;
-import io.qameta.allure.Step;
 import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
+import objects.users.User;
+import org.testng.Assert;
 
 public class RpHttpClient {
+    private static final RequestSpecification serviceRequestSpec = RpHttpRequestSpecManager.serviceRequestSpec();
+    private final String bearerToken;
 
-    public RpHttpClient(){}
-
-    private static final String API_URL = Config.BASE_URL.endsWith("/")
-            ? "%sapi/v1/".formatted(Config.BASE_URL)
-            : "%s/api/v1/".formatted(Config.BASE_URL);
-    private final RequestSpecification serviceRequestSpec = serviceRequestSpec();
-
-    private RequestSpecification serviceRequestSpec() {
-        return new RequestSpecBuilder()
-                .setBaseUri(API_URL)
-                .build()
-                .header("Authorization", Config.BEARER_TOKEN);
+    public RpHttpClient(User user) {
+        this.bearerToken = new RpHttpTokenManager().obtainBearerToken(user);
     }
 
-    @Step("API health check. Call project/analyzer/status")
     public void healthCheck() {
         RestAssured.given(serviceRequestSpec)
                 .basePath("project/analyzer/status")
                 .when()
+                .header("Authorization", this.bearerToken)
                 .get()
                 .then()
                 .assertThat()
                 .statusCode(200);
+    }
+
+    public void pingHost() {
+        int pingStatusCode = RestAssured
+                .given()
+                .baseUri(Config.BASE_URL)
+                .when()
+                .get()
+                .then()
+                .extract()
+                .statusCode();
+
+        Assert.assertEquals(pingStatusCode, 200,
+                "Pinging Report Portal server, it should return status code 200, but returned %s"
+                        .formatted(pingStatusCode));
     }
 }
