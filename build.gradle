@@ -42,7 +42,7 @@ ext {
 }
 
 dependencies {
-    testImplementation "org.testng:testng:$testngVersion"
+    implementation "org.testng:testng:$testngVersion"
     implementation "io.qameta.allure:allure-testng:$allureVersion"
     implementation "io.qameta.allure:allure-rest-assured:$allureVersion"
     implementation "org.seleniumhq.selenium:selenium-java:$seleniumVersion"
