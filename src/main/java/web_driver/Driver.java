@@ -10,7 +10,7 @@ public class Driver {
     public static final Duration WAIT_S_TIMEOUT = Duration.ofMillis(500);
     public static final Duration WAIT_M_TIMEOUT = Duration.ofSeconds(5);
     public static final Duration WAIT_L_TIMEOUT = Duration.ofSeconds(10);
-    public static final Duration WAIT_XL_TIMEOUT = Duration.ofSeconds(20);
+    public static final Duration WAIT_XL_TIMEOUT = Duration.ofSeconds(60);
     private static final ThreadLocal<WebDriverWait> waitS = new ThreadLocal<>();
     private static final ThreadLocal<WebDriverWait> waitM = new ThreadLocal<>();
     private static final ThreadLocal<WebDriverWait> waitL = new ThreadLocal<>();

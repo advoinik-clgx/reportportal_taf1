@@ -4,17 +4,17 @@
         <listener class-name="listeners.AllureTestListener"/>
     </listeners>
 
-    <test name="API tests">
+    <test enabled="true" name="API tests">
         <packages>
             <package name="scenarios.api"/>
         </packages>
     </test>
-    <test name="TTTest">
+    <test enabled="true" name="TTTest">
         <classes>
             <class name="scenarios.ui.UserSettingsTest"/>
         </classes>
     </test>
-    <test name="Login">
+    <test enabled="true" name="Login">
         <classes>
             <class name="scenarios.ui.LoginTest"/>
         </classes>
