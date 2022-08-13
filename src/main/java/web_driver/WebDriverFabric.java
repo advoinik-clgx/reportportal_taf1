@@ -31,14 +31,14 @@ class WebDriverFabric {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--window-size=1100,1200");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--ignore-certificate-errors");
-        options.addArguments("--disable-gpu");
-        options.addArguments("disable-infobars");
+//        options.addArguments("--disable-extensions");
+//        options.addArguments("--ignore-certificate-errors");
+//        options.addArguments("--disable-gpu");
+//        options.addArguments("disable-infobars");
         options.setHeadless(true);
-        options.setAcceptInsecureCerts(true);
+//        options.setAcceptInsecureCerts(true);
         return new ChromeDriver(options);
     }
 
