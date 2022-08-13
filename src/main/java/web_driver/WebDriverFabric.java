@@ -13,7 +13,7 @@ class WebDriverFabric {
     private WebDriverFabric() {
     }
 
-    protected static WebDriver createWebDriver(String name) {
+    protected static WebDriver createWebDriver(@SuppressWarnings("SameParameterValue") String name) {
         log.debug("Initializing a WebDriver by name {}...", name);
 
         if (null == name) {
@@ -31,13 +31,14 @@ class WebDriverFabric {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
 //        options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--window-size=1100,1200");
 //        options.addArguments("--disable-extensions");
 //        options.addArguments("--ignore-certificate-errors");
 //        options.addArguments("--disable-gpu");
 //        options.addArguments("disable-infobars");
-        options.setHeadless(true);
+//        options.setHeadless(true);
 //        options.setAcceptInsecureCerts(true);
         return new ChromeDriver(options);
     }
