@@ -14,6 +14,7 @@ public class LoginSteps {
         loginPage = new NativeLoginPage();
     }
 
+    @Step(value = "Waiting for Login pag to load...")
     public boolean loaded() {
         return loginPage.loaded();
     }

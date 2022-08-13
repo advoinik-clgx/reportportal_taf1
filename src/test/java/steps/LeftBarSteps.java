@@ -20,6 +20,7 @@ public class LeftBarSteps {
         leftBar.dashboardIcon.click();
     }
 
+    @Step(value = "Waiting for Left Bar to load...")
     public boolean loaded() {
         return leftBar.loaded();
     }
