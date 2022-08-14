@@ -31,6 +31,7 @@ class LoginTest extends BaseUi {
     void loginWithUserValidCredentials(User user) {
         BaseSteps.navigate();
         LoginSteps loginSteps = new LoginSteps();
+        loginSteps.loaded();
         loginSteps.login(user);
         LeftBarSteps leftBarSteps = new LeftBarSteps();
         Assert.assertTrue(leftBarSteps.loaded());
