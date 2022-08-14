@@ -1,8 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<!--<suite name="Some suite" verbose="1">-->
 <suite name="Some suite" verbose="1" data-provider-thread-count="5" parallel="methods" thread-count="5">
     <listeners>
-<!--        <listener class-name="listeners.AllureTestListener"/>-->
+        <listener class-name="listeners.AllureTestListener"/>
     </listeners>
 
     <test enabled="true" name="API tests">

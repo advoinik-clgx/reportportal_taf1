@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 class AvailabilityTest {
 
-    @Test
+    @Test(testName = "API health check")
     void serviceAvailableTest() {
         RpHttpClient apiClient = new RpHttpClient(new DefaultSuperAdmin());
         apiClient.healthCheck();
