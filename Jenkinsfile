@@ -11,7 +11,7 @@ pipeline {
 
     parameters {
         choice(name: 'browser', choices: ['firefox', 'chrome'])
-        string(name: 'rp_endpoint', defaultValue: 'http://10.114.0.3:8080/')
+        string(name: 'rp_endpoint', defaultValue: 'http://68.183.214.91:8080/')
     }
 
     stages {
