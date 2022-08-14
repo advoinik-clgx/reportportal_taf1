@@ -16,7 +16,9 @@ Supported arguments:
 E.g.:
 
 ```shell
-gradle clean test -Drp.endpoint="http://localhost:8080/" -Ddriver="chrome"
+gradle clean test -Drp.endpoint="http://localhost:8080/" -Ddriver="chrome" -Dselenoid_url=3.66.110.100
+
+-Dselenoid_url is optional. Tests will run locally by default.
 ```
 
 ### To run Allure report:

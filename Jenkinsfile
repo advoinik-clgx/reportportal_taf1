@@ -25,7 +25,7 @@ pipeline {
                         passwordVariable: 'rp_api_password',
                         usernameVariable: 'rp_api_user')]) {
                     sh "chmod +x gradlew"
-                    sh "./gradlew clean test -Drp_endpoint=${rp_endpoint} -Dweb_driver=$browser -Dselenoid --info"
+                    sh "./gradlew clean test -Drp_endpoint=${rp_endpoint} -Dweb_driver=$browser -Dselenoid_url=3.66.110.100 --info"
                 }
             }
         }

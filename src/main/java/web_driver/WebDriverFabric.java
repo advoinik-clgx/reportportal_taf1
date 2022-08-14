@@ -13,7 +13,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.util.Map;
 
 @Slf4j
 class WebDriverFabric {
@@ -57,7 +56,7 @@ class WebDriverFabric {
 //        ));
         try {
             driver = new RemoteWebDriver(
-                    URI.create(Config.SELENOID_BASE_URL + "/wd/hub").toURL(),
+                    URI.create(Config.SELENOID_BASE_URL).toURL(),
                     capabilities
             );
         } catch (MalformedURLException e) {
@@ -93,13 +92,13 @@ class WebDriverFabric {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", "firefox");
         capabilities.setCapability("browserVersion", "103.0");
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
+//        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+//                "enableVNC", true,
+//                "enableVideo", true
+//        ));
         try {
             driver = new RemoteWebDriver(
-                    URI.create("http://localhost:4444/wd/hub").toURL(),
+                    URI.create(Config.SELENOID_BASE_URL).toURL(),
                     capabilities
             );
         } catch (MalformedURLException e) {
