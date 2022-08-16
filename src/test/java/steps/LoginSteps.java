@@ -28,4 +28,14 @@ public class LoginSteps {
         loginPage.submitBtn.click();
         new LeftBarSteps().loaded();
     }
+    
+    @Step("Login with {user.login} user")
+    public void login1(User user) {
+        log.info("Logging in with {} user", user.getLogin());
+        AllureHelper.saveTextLog("Logging in with %s user".formatted(user.getLogin()));
+        loginPage.loginInput.sendKeys(user.getLogin());
+        loginPage.passwordInput.sendKeys(user.getPassword());
+        loginPage.submitBtn.click();
+        new LeftBarSteps().loaded();
+    }
 }
